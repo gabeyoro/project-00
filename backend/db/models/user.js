@@ -1,13 +1,16 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model, Validator } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-  }
+    static associate(models){
+
+    }
+  };
+
   User.init({
     username: { 
-      type: DataTypes.STRING(30),
+      type: DataTypes.STRING,
       allowNull: false, 
       validate: {
         len: [4, 30],
