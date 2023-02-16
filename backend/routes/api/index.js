@@ -6,6 +6,7 @@ const usersRouter = require("./users.js");
 const { restoreUser } = require("../../utils/auth.js");
 const { requireAuth } = require("../../utils/auth.js");
 const { setTokenCookie } = require("../../utils/auth.js");
+
 const { User } = require("../../db/models");
 
 router.use(restoreUser);
