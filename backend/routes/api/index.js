@@ -1,12 +1,22 @@
 const router = require("express").Router();
 
-const { restoreUser } = require('../../utils/auth.js');
-const { requireAuth } = require('../../utils/auth.js');
-const { setTokenCookie } = require('../../utils/auth.js');
-const { User } = require('../../db/models');
+const sessionRouter = require("./session.js");
+const usersRouter = require("./users.js");
+
+const { restoreUser } = require("../../utils/auth.js");
+const { requireAuth } = require("../../utils/auth.js");
+const { setTokenCookie } = require("../../utils/auth.js");
+const { User } = require("../../db/models");
 
 router.use(restoreUser);
 
+router.use("/session", sessionRouter);
+
+router.use("/users", usersRouter);
+
+router.post("/test", (req, res) => {
+  res.json({ requestBody: req.body });
+});
 /* outer.get(
   '/restore-user',
   (req, res) => {
@@ -20,9 +30,7 @@ router.get(
   (req, res) => {
     return res.json(req.user);
   }
-) */;
-
-router.get("/csrf/restore", (req, res) => {
+) */ router.get("/csrf/restore", (req, res) => {
   const csrfToken = req.csrfToken();
   res.cookie("XSRF-TOKEN", csrfToken);
   res.status(200).json({
