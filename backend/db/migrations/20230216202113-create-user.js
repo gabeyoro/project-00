@@ -39,10 +39,9 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
-    });
+    }, options);
   },
   down: async (queryInterface, Sequelize) => {
-    options.tableName = "Users";
-    await queryInterface.dropTable(options);
+    await queryInterface.dropTable('Users', options);
   },
-};
+  };
