@@ -9,16 +9,16 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.addColumn('Users', 'firstName', {  // options object
+    await queryInterface.addColumn(options, 'firstName', {  // options object
       type: Sequelize.STRING(30),
     })
-    await queryInterface.addColumn('Users', 'lastName', {  // options object
+    await queryInterface.addColumn(options, 'lastName', {  // options object
       type: Sequelize.STRING(30),
     })
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.removeColumn('Users', 'firstName') // options object
-    await queryInterface.removeColumn('Users', 'lastName')  // options object
+    await queryInterface.removeColumn(options, 'firstName') // options object
+    await queryInterface.removeColumn(options, 'lastName')  // options object
   }
 };
