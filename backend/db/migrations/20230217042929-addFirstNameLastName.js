@@ -1,11 +1,10 @@
-let options = {};
+/* let options = {};
 options.tableName = 'Users'; 
 
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  
 }
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.addColumn(options, 'firstName', {  // options object
@@ -22,4 +21,4 @@ module.exports = {
     await queryInterface.removeColumn(options, 'firstName') // options object
     await queryInterface.removeColumn(options, 'lastName')  // options object
   }
-};
+}; */
