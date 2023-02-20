@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
     }
     static associate(models){
+      Users.hasMany(models.Group, {foreignKey:"organizerId"})
+      Users.hasMany(models.Membership, {foreignKey:"userId"})
+      Users.hasMany(models.Attendance, {foreignKey:"userId"})
     }
     static getCurrentUserById(id) {
       return User.scope("currentUser").findByPk(id);
