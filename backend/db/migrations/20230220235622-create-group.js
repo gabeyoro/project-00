@@ -14,21 +14,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      organizerId: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:"Users",
-          key:"id"
-        }
-      },
       name: {
         type: Sequelize.STRING
       },
       about: {
         type: Sequelize.TEXT
-      },
-      type: {
-        type: Sequelize.STRING
       },
       private: {
         type: Sequelize.BOOLEAN

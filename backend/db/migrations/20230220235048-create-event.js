@@ -14,26 +14,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      venueId: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:"Venues"
-        }
-      },
-      groupId: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:"Groups"
-        }
-      },
       name: {
         type: Sequelize.STRING
       },
       description: {
         type: Sequelize.TEXT
-      },
-      type: {
-        type: Sequelize.STRING
       },
       capacity: {
         type: Sequelize.INTEGER

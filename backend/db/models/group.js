@@ -5,17 +5,17 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Group extends Model {
     static associate(models) {
-      Group.belongsTo(models.User, {foreignKey:"organizerId"})
+/*       Group.belongsTo(models.User, {foreignKey:"organizerId"}) */
     }
   }
   Group.init({
-    organizerId: { type: DataTypes.INTEGER, references:{modelName:"Users"} },
+/*     organizerId: { type: DataTypes.INTEGER, references:{modelName:"Users"} }, */
     name: DataTypes.STRING,
     about: DataTypes.TEXT,
-    type: { 
+    /* type: { 
       type: DataTypes.ENUM,
       values:['a', 'b', 'c']
-    },
+    }, */
     private: DataTypes.BOOLEAN,
     city: DataTypes.STRING,
     state: DataTypes.STRING

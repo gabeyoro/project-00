@@ -17,20 +17,6 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
-      eventId: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:"Events",
-          key: "id"
-        }
-      },
-      userId: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:"Groups",
-          key: "id"
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
