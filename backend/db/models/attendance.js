@@ -18,13 +18,12 @@ module.exports = (sequelize, DataTypes) => {
           model: "Event",
         },
       },
-      /* userId: { 
+      userId: { 
       type: DataTypes.INTEGER, 
       references:{
         model:"User",
-        key:"id"
       }
-    },  */
+    }, 
     },
     {
       sequelize,
