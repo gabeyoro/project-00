@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   class Venue extends Model {
     static associate(models) {
       Venue.belongsTo(models.Group, {foreignKey:"groupId"});
-      Venue.hasMany(models.Events, {foreignKey:"venueId"});
+      Venue.hasMany(models.Event, {foreignKey:"venueId"});
     }
   }
   Venue.init({
-    groupId: { type: DataTypes.INTEGER, references:{model:Group} },
+    groupId: { type: DataTypes.INTEGER, references:{model:"Group"} },
     address: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,

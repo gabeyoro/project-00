@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     groupId: { 
       type: DataTypes.INTEGER, 
       references: { 
-        model: Group
+        model: "Group"
       } 
     },
     url: DataTypes.STRING,
