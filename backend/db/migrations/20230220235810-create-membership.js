@@ -15,19 +15,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         references:{
           modelName:"Users"
         }
       },
       groupID: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         references:{
           modelName:"Groups"
         }
       },
       status: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM,
+        values:['co-host', 'pending']
       },
       createdAt: {
         allowNull: false,
