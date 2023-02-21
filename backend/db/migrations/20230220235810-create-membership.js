@@ -17,13 +17,13 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         references:{
-          modelName:"Users"
+          model:"Users"
         }
       },
       groupID: {
         type: Sequelize.INTEGER,
         references:{
-          modelName:"Groups"
+          model:"Groups"
         }
       },
       status: {
