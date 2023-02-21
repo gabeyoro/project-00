@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Membership.init({
-    userId: { type: DataTypes.STRING, references:{modelName:"Users"} },
+    userId: { type: DataTypes.STRING, references:{model:User} },
     groupID: DataTypes.STRING,
     status: DataTypes.ENUM
   }, {
