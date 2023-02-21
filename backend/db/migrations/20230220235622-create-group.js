@@ -27,7 +27,8 @@ module.exports = {
         type: Sequelize.TEXT
       },
       type: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM,
+        values:['a', 'b', 'c']
       },
       private: {
         type: Sequelize.BOOLEAN

@@ -33,7 +33,8 @@ module.exports = {
         type: Sequelize.TEXT
       },
       type: {
-        type: Sequelize.ENUM
+        type: DataTypes.ENUM, 
+        values:['a', 'b', 'c']
       },
       capacity: {
         type: Sequelize.INTEGER

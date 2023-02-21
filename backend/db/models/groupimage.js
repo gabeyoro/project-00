@@ -9,7 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   GroupImage.init({
-    groupId: { type: DataTypes.INTEGER, references:{model:Group} },
+    groupId: { 
+      type: DataTypes.INTEGER, 
+      references: { 
+        model: Group
+      } 
+    },
     url: DataTypes.STRING,
     preview: DataTypes.BOOLEAN
   }, {

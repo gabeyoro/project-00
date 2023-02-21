@@ -10,9 +10,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Attendance.init({
-    status: DataTypes.ENUM,
-    eventId: { type: DataTypes.INTEGER, references:{model:Event} }, 
-    userId: { type: DataTypes.INTEGER, references:{model:User} }, 
+    status: { 
+      type: DataTypes.ENUM, 
+      values:['attending', 'not attending'],
+    },
+    eventId: { 
+      type: DataTypes.INTEGER, 
+      references: {
+        model:Event
+      } 
+    }, 
+    userId: { 
+      type: DataTypes.INTEGER, 
+      references: { 
+        model: User
+      } 
+    }, 
   }, {
     sequelize,
     modelName: 'Attendance',

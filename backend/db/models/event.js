@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     groupId: { type: DataTypes.INTEGER, references:{model:Group, key:"id"} },
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
-    type: DataTypes.ENUM,
+    type: { 
+      type: DataTypes.ENUM, 
+      values:['a', 'b', 'c']
+    },
     capacity: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     startDate: DataTypes.DATE,
