@@ -15,7 +15,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       status: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM, 
+        values:['attending', 'not attending'],
       },
       eventId: {
         type: Sequelize.INTEGER,
