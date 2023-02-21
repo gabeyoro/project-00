@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   Attendance.init(
     {
       status: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM, 
+        values:['a', 'b', 'c']
       },
       eventId: {
         type: DataTypes.INTEGER,
