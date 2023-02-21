@@ -5,6 +5,7 @@ if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  
 }
 
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable('Venues', {
