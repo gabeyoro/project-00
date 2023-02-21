@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Venue.init({
-    groupId: DataTypes.INTEGER,
+    groupId: { type: DataTypes.INTEGER, references:{model:Group} },
     address: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,
