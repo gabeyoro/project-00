@@ -5,8 +5,8 @@ const bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject(){
-      const {id, username, email, lastName, firstName} = this;
-      return {id, username, email, lastName, firstName};
+      const {id, username, email} = this;
+      return {id, username, email};
     }
     validatePassword(password) {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
@@ -70,6 +70,9 @@ module.exports = (sequelize, DataTypes) => {
     email: { 
       type: DataTypes.STRING,
       allowNull: false, 
+      unique:{
+        msg:"User with that email already exists",
+      },
       validate: {
         len:[3, 256],
         isEmail: true
