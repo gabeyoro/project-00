@@ -3,6 +3,7 @@ const router = require("express").Router();
 const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 
+const { requirePermissions } = require("../../utils/auth.js");
 const { restoreUser } = require("../../utils/auth.js");
 const { requireAuth } = require("../../utils/auth.js");
 const { setTokenCookie } = require("../../utils/auth.js");
@@ -15,9 +16,18 @@ router.use("/session", sessionRouter);
 
 router.use("/users", usersRouter);
 
-router.post("/test", (req, res) => {
+router.post("/test", requireAuth, (req, res) => {
   res.json({ requestBody: req.body });
 });
+
+router.get("/csrf/restore", (req, res) => {
+  const csrfToken = req.csrfToken();
+  res.cookie("XSRF-TOKEN", csrfToken);
+  res.status(200).json({
+    "XSRF-Token": csrfToken,
+  });
+});
+
 /* outer.get(
   '/restore-user',
   (req, res) => {
@@ -31,14 +41,6 @@ router.get(
   (req, res) => {
     return res.json(req.user);
   }
-) */ router.get("/csrf/restore", (req, res) => {
-  const csrfToken = req.csrfToken();
-  res.cookie("XSRF-TOKEN", csrfToken);
-  res.status(200).json({
-    "XSRF-Token": csrfToken,
-  });
-});
-
 /* router.get('/set-token-cookie', async (_req, res) => {
   const user = await User.findOne({
       where: {
