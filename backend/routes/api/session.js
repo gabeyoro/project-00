@@ -11,14 +11,14 @@ const validateLogin = [
   check("credential")
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage("Please provide a valid email or username."),
+    .withMessage("Email or username is required."),
   check("password")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a password."),
+    .withMessage("Password is required."),
   handleValidationErrors,
 ];
 
-router.get("/", restoreUser, (req, res) => {
+router.get("/", requireAuth, restoreUser, (req, res) => {
   const { user } = req;
   if (user) {
     return res.json({
@@ -40,10 +40,16 @@ router.post("/", validateLogin, async (req, res, next) => {
     return next(err);
   }
 
-  await setTokenCookie(res, user);
+  const token = await setTokenCookie(res, user);
 
-  return res.json({
-    user: user,
+  return res.status(200).json({
+    user:{
+      id: user.id, 
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email:  user.email, 
+      token: token
+    }
   });
 });
 
