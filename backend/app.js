@@ -54,7 +54,15 @@ app.use((err, _req, _res, next) => {
     let errors = {};
     for (let error of err.errors) {
       errors[error.path] = error.message;
+      if(error.type==='unique violation' && error.path==='email'){
+        err.message = "User already exists";
+        err.status = 403;
+        err.title = 'Validation error';
+        err.errors = errors;
+        next(err)
+      }
     }
+    err.status = 400;
     err.title = 'Validation error';
     err.errors = errors;
   }
