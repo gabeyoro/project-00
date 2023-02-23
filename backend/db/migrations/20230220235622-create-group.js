@@ -14,6 +14,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      organizerId:{
+        type:Sequelize.INTEGER,
+        foreignKey:true,
+        references:{
+          model:"Users",
+          key:"id"
+        }
+      },
       name: {
         type: Sequelize.STRING
       },
@@ -28,6 +36,9 @@ module.exports = {
       },
       state: {
         type: Sequelize.STRING
+      },
+      type: {
+        type: Sequelize.ENUM('a', 'b', 'c')
       },
       createdAt: {
         allowNull: false,

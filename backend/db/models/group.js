@@ -1,22 +1,22 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Group extends Model {
     static associate(models) {
-      Group.belongsTo(models.User, {foreignKey:"organizerId"});
-      Group.hasMany(models.Venue, {foreignKey:"groupId"});
-      Group.hasMany(models.GroupImage, {foreignKey:"groupId"});
-      Group.hasMany(models.Membership, {foreignKey:"groupId"});
-      Group.hasMany(models.Event, {foreignKey:"groupId"});
+      Group.belongsTo(models.User, {foreignKey:"organizerId", targetKey:"id"});
+      Group.hasMany(models.Venue, {targetKey:"groupId"});
+      Group.hasMany(models.GroupImage, {targetKey:"groupId"});
+      Group.hasMany(models.Membership, {targetKey:"groupId"});
+      Group.hasMany(models.Event, {targetKey:"groupId"});
     }
   }
   Group.init({
     organizerId: { 
       type: DataTypes.INTEGER, 
       references:{
-        model:"User"
+        model:"User",
+        key:"id"
       } 
     },
     name: DataTypes.STRING,
