@@ -1,7 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Group extends Model {
     static associate(models) {
@@ -16,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     organizerId: { 
       type: DataTypes.INTEGER, 
       references:{
-        model:"User"
+        model:"User",
+        key:"id"
       } 
     },
     name: DataTypes.STRING,
