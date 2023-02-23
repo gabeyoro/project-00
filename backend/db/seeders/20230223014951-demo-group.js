@@ -5,9 +5,9 @@ if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  
 }
 const seeders = [
-  {organizerId:fk, name:"Something Cool", about:"Super cool stuff here.", 
+  {organizerId:20, name:"Something Cool", about:"Super cool stuff here.", 
     type:"a", private:true, city:"Los Angeles", state:"CA"},
-  {organizerId:fk, name:"Something Cooler", about:"Super cooler stuff here.", 
+  {organizerId:24, name:"Something Cooler", about:"Super cooler stuff here.", 
     type:"c", private:false, city:"Brooklyn", state:"NY"}
 ]
 
@@ -20,6 +20,6 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     options.tableName = 'Groups';
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete(options, {where: { organizerId: { [Op.gt]:0 }}}, {});
+    return queryInterface.bulkDelete(options, null, {});
   }
 };
