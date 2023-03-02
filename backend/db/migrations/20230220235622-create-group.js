@@ -16,10 +16,8 @@ module.exports = {
       },
       organizerId:{
         type:Sequelize.INTEGER,
-        foreignKey:true,
         references:{
           model:"Users",
-          key:"id"
         }
       },
       name: {

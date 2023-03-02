@@ -4,7 +4,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Group extends Model {
     static associate(models) {
-      Group.belongsTo(models.User, {foreignKey:"organizerId", targetKey:"id"});
+      Group.belongsTo(models.User, {foreignKey:"organizerId"});
       Group.hasMany(models.Venue, {targetKey:"groupId"});
       Group.hasMany(models.GroupImage, {targetKey:"groupId"});
       Group.hasMany(models.Membership, {targetKey:"groupId"});
@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER, 
       references:{
         model:"User",
-        key:"id"
       } 
     },
     name: DataTypes.STRING,
